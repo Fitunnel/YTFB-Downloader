@@ -13,11 +13,31 @@ Alfi Downloader Pro adalah website sederhana berbasis Node.js yang dijalankan me
 Pastikan kamu sudah memberikan izin penyimpanan dengan perintah `termux-setup-storage`.
 
 ### 1. Update & Install Package
-```bash
+```
 pkg update && pkg upgrade
 pkg install nodejs-lts python ffmpeg -y
 pip install yt-dlp
+```
+
+```
 git clone https://github.com/Fitunnel/YTFB-Downloader
+```
+
+```
 cd YTFB-Downloader
+```
+
+```
 mkdir downloads
 npm install
+```
+
+### 2. Jalankan scriptnya 
+```
+node server.js
+```
+
+### 3. Mematikan scriptnya
+```
+CTRL+C
+```
