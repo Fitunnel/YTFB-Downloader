@@ -17,7 +17,7 @@ Pastikan kamu sudah memberikan izin penyimpanan dengan perintah `termux-setup-st
 pkg update && pkg upgrade
 pkg install nodejs-lts python ffmpeg -y
 pip install yt-dlp
-git clone https://github.com/Fitunnel/YTFB-Downloader.git
-cd downloader
+git clone https://github.com/Fitunnel/YTFB-Downloader
+cd YTFB-Downloader
 mkdir downloads
 npm install
