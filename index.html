@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alfi Downloader Pro</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body { background: #0f172a; }
+        .glass { background: rgba(30, 41, 59, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.1); }
+    </style>
+</head>
+<body class="text-slate-200 flex items-center justify-center min-h-screen p-4">
+    <div class="glass p-8 rounded-3xl w-full max-w-md shadow-2xl">
+        <div class="text-center mb-6">
+            <h1 class="text-2xl font-black text-white italic">ALFI <span class="text-blue-500 italic">DL</span></h1>
+            <p class="text-slate-400 text-xs uppercase tracking-tighter">Premium Video Converter</p>
+        </div>
+
+        <div class="space-y-4">
+            <input type="text" id="url" placeholder="Paste link YouTube / FB..." 
+                class="w-full px-4 py-3 rounded-xl bg-slate-900/50 border border-slate-700 focus:border-blue-500 outline-none transition-all">
+            
+            <div class="grid grid-cols-1 gap-2">
+                <button onclick="dl('mp3')" class="bg-emerald-600 hover:bg-emerald-500 py-3 rounded-xl font-bold flex items-center justify-center gap-2">
+                    <i class="fas fa-music"></i> Audio MP3
+                </button>
+                <button onclick="dl('720')" class="bg-blue-600 hover:bg-blue-500 py-3 rounded-xl font-bold flex items-center justify-center gap-2">
+                    <i class="fas fa-video"></i> Video HD (720p)
+                </button>
+                <button onclick="dl('360')" class="bg-slate-700 hover:bg-slate-600 py-3 rounded-xl font-bold flex items-center justify-center gap-2 text-sm">
+                    <i class="fas fa-mobile-alt"></i> Video Hemat (360p)
+                </button>
+            </div>
+        </div>
+
+        <div id="loadingArea" class="hidden mt-6 text-center animate-pulse">
+            <p id="msg" class="text-blue-400 text-sm font-mono"></p>
+        </div>
+
+        <div class="mt-8 pt-4 border-t border-slate-700 text-center opacity-50">
+            <p class="text-[10px] tracking-widest uppercase">Created by Alfi &bull; 2026</p>
+        </div>
+    </div>
+
+    <script>
+        function dl(type) {
+            const url = document.getElementById('url').value;
+            const msg = document.getElementById('msg');
+            const area = document.getElementById('loadingArea');
+
+            if (!url.includes('youtu') && !url.includes('facebook') && !url.includes('fb.')) {
+                return alert("Link tidak valid! Gunakan link YouTube atau FB.");
+            }
+
+            area.classList.remove('hidden');
+            msg.innerText = "🚀 Termux sedang memproses...";
+            
+            window.location.href = `http://localhost:3000/download?type=${type}&url=${encodeURIComponent(url)}`;
+            
+            // Reset input setelah 3 detik
+            setTimeout(() => { document.getElementById('url').value = ''; }, 3000);
+        }
+    </script>
+</body>
+</html>
